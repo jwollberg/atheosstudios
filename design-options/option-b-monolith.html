@@ -1,0 +1,383 @@
+<!doctype html>
+<!--
+  ATHEOS STUDIOS — DESIGN DIRECTION B: "MONOLITH"
+  Bold editorial / brutalist. Near-black ink on off-white paper, huge type,
+  strong visible grid, minimal color (one blood-red accent). Mood: severe,
+  confident, print-like. Standalone mockup — visuals from CSS/inline SVG only.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atheos Studios — Monolith</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f1ea;
+    --paper-2:#eae6db;
+    --ink:#111110;
+    --ink-2:#3a3a37;
+    --muted:#6b6a63;
+    --accent:#d8341f;      /* blood red */
+    --line:#111110;
+    --line-soft:#c9c4b8;
+    --focus:#0b5fff;
+    --maxw:1280px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Archivo",system-ui,sans-serif;line-height:1.5;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  h1,h2,h3{font-family:"Archivo Black",system-ui,sans-serif;line-height:.92;
+    letter-spacing:-.02em;margin:0;text-transform:uppercase}
+
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);
+    padding:10px 16px;z-index:100;font-weight:700}
+  .skip:focus{left:12px;top:12px}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+  .badge{position:fixed;right:14px;bottom:14px;z-index:60;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;font-weight:500;
+    color:var(--paper);background:var(--ink);padding:8px 12px;border:2px solid var(--accent)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:3px solid var(--ink)}
+  .nav{display:flex;align-items:stretch;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;
+    font-family:"Archivo Black";font-size:18px;letter-spacing:-.01em;text-transform:uppercase}
+  .brand .mk{width:26px;height:26px;background:var(--accent);display:inline-block}
+  .navlinks{display:none;align-items:stretch}
+  .navlinks a{display:flex;align-items:center;padding:0 20px;text-decoration:none;
+    font-family:"IBM Plex Mono";font-size:13px;text-transform:uppercase;letter-spacing:.06em;
+    border-left:2px solid var(--ink)}
+  .navlinks a:hover{background:var(--ink);color:var(--paper)}
+  .navlinks a.cta{background:var(--accent);color:#fff;font-weight:500}
+  .navlinks a.cta:hover{background:var(--ink)}
+  .navtoggle{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);
+    border:0;padding:0 18px;font-family:"IBM Plex Mono";font-size:13px;text-transform:uppercase;cursor:pointer}
+  #mobilemenu{display:none;border-bottom:3px solid var(--ink)}
+  #mobilemenu.open{display:block}
+  #mobilemenu a{display:block;padding:16px 20px;text-decoration:none;border-top:2px solid var(--line-soft);
+    font-family:"IBM Plex Mono";text-transform:uppercase;font-size:14px;letter-spacing:.05em}
+  #mobilemenu a:hover{background:var(--ink);color:var(--paper)}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-family:"IBM Plex Mono";font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:.06em;
+    padding:16px 26px;border:3px solid var(--ink);cursor:pointer;background:var(--paper);color:var(--ink);
+    transition:transform .12s}
+  .btn:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+  .btn-primary{background:var(--accent);color:#fff;border-color:var(--ink)}
+  .btn-primary:hover{box-shadow:6px 6px 0 var(--ink)}
+
+  /* Hero */
+  .hero{border-bottom:3px solid var(--ink);position:relative;overflow:hidden}
+  .hero-inner{padding:20px 0 0}
+  .hero-tag{display:flex;justify-content:space-between;border-bottom:2px solid var(--line-soft);
+    padding-bottom:12px;margin-bottom:6px;font-family:"IBM Plex Mono";font-size:12px;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--muted);flex-wrap:wrap;gap:8px}
+  .hero-tag .r{color:var(--accent);font-weight:500}
+  .bigword{font-size:clamp(3.4rem,16vw,13rem);line-height:.82;margin:10px 0 0;
+    letter-spacing:-.03em}
+  .bigword .out{color:transparent;-webkit-text-stroke:2px var(--ink)}
+  .hero-mid{display:grid;grid-template-columns:1fr;gap:20px;
+    border-top:2px solid var(--ink);margin-top:18px;padding:24px 0}
+  .mission{font-family:"Archivo";font-weight:600;font-size:clamp(1.15rem,3vw,1.8rem);
+    line-height:1.2;max-width:22ch;text-transform:none;letter-spacing:-.01em}
+  .mission b{color:var(--accent)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  @media(min-width:900px){
+    .hero-mid{grid-template-columns:1.4fr 1fr;align-items:end}
+    .hero-cta{justify-content:flex-end}
+  }
+  /* marquee strip */
+  .strip{background:var(--ink);color:var(--paper);overflow:hidden;border-top:3px solid var(--ink);
+    white-space:nowrap}
+  .strip .track{display:inline-block;padding:11px 0;font-family:"IBM Plex Mono";font-size:13px;
+    letter-spacing:.18em;text-transform:uppercase;animation:slide 26s linear infinite}
+  .strip .track span{margin:0 26px}
+  .strip .track span b{color:var(--accent)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.strip .track{animation:none;padding-left:20px}}
+
+  /* Section frame */
+  .sec{border-bottom:3px solid var(--ink)}
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:26px 20px;border-bottom:2px solid var(--line-soft);flex-wrap:wrap;max-width:var(--maxw);margin-inline:auto}
+  .sec-head h2{font-size:clamp(1.8rem,6vw,3.4rem)}
+  .sec-head .idx{font-family:"IBM Plex Mono";font-size:13px;color:var(--accent);letter-spacing:.1em}
+
+  /* Featured game */
+  .feature{display:grid;grid-template-columns:1fr}
+  .keyart{position:relative;min-height:360px;border-bottom:3px solid var(--ink);background:#141310;overflow:hidden}
+  .keyart svg{position:absolute;inset:0;width:100%;height:100%}
+  .keyart .coming{position:absolute;top:0;left:0;background:var(--accent);color:#fff;
+    font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    padding:9px 16px;font-weight:500;z-index:3;border-right:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+  .fbody{padding:30px 20px 36px}
+  .fbody .titlebar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+    border-bottom:2px solid var(--ink);padding-bottom:14px}
+  .fbody h3{font-size:clamp(2.4rem,9vw,5rem);line-height:.85}
+  .fbody .genre{font-family:"IBM Plex Mono";font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+  .fbody p{font-size:clamp(1rem,2.3vw,1.15rem);max-width:60ch;margin:20px 0 0;color:var(--ink-2)}
+  .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin:24px 0 0;border:2px solid var(--ink)}
+  .specs div{padding:14px 16px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .specs div:nth-child(2n){border-right:0}
+  .specs div:nth-last-child(-n+2){border-bottom:0}
+  .specs dt{font-family:"IBM Plex Mono";font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .specs dd{margin:4px 0 0;font-family:"Archivo Black";font-size:1rem;text-transform:uppercase}
+  .fbody .btn{margin-top:26px}
+  @media(min-width:960px){
+    .feature{grid-template-columns:1.1fr 1fr}
+    .keyart{border-bottom:0;border-right:3px solid var(--ink);min-height:520px}
+  }
+
+  /* future slots */
+  .slots{display:grid;grid-template-columns:1fr}
+  @media(min-width:700px){.slots{grid-template-columns:1fr 1fr}}
+  .slot{padding:30px 20px;border-top:2px solid var(--ink);min-height:170px;position:relative}
+  .slot:nth-child(2){border-left:2px solid var(--ink)}
+  @media(max-width:699px){.slot:nth-child(2){border-left:0}}
+  .slot .n{font-family:"Archivo Black";font-size:2.4rem;color:transparent;-webkit-text-stroke:1.5px var(--ink);line-height:1}
+  .slot h4{margin:14px 0 6px;font-size:1.3rem}
+  .slot p{margin:0;color:var(--muted);font-size:.95rem;max-width:34ch}
+  .slot .st{position:absolute;top:30px;right:20px;font-family:"IBM Plex Mono";font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1.5px solid var(--accent);padding:3px 8px}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr}
+  .about-left{padding:34px 20px;border-bottom:2px solid var(--ink)}
+  .about-right{padding:34px 20px}
+  .about-left h2{font-size:clamp(2rem,7vw,4rem)}
+  .about-right p{font-size:clamp(1.05rem,2.4vw,1.35rem);line-height:1.45;color:var(--ink-2);margin:0}
+  .about-right p b{color:var(--ink)}
+  .pull{font-family:"Archivo Black";text-transform:uppercase;font-size:clamp(1.2rem,3vw,1.7rem);
+    line-height:1.05;margin-top:26px;color:var(--accent)}
+  @media(min-width:900px){
+    .about-grid{grid-template-columns:1fr 1.3fr}
+    .about-left{border-bottom:0;border-right:2px solid var(--ink)}
+  }
+
+  /* Follow */
+  .follow-grid{display:grid;grid-template-columns:1fr}
+  .follow-grid > *{padding:34px 20px}
+  .follow-left h2{font-size:clamp(2rem,7vw,4rem)}
+  .follow-left p{color:var(--ink-2);margin:16px 0 0;max-width:36ch}
+  .soclist{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink)}
+  .soclist a{display:flex;align-items:center;gap:12px;padding:20px;text-decoration:none;
+    font-family:"IBM Plex Mono";text-transform:uppercase;font-size:13px;letter-spacing:.06em;
+    border-right:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .soclist a:nth-child(2n){border-right:0}
+  .soclist a:nth-last-child(-n+2){border-bottom:0}
+  .soclist a:hover{background:var(--ink);color:var(--paper)}
+  .soclist a:hover svg{fill:var(--paper)}
+  .soclist svg{fill:var(--ink);flex:none}
+  .mailbig{display:block;margin-top:20px;font-family:"Archivo Black";text-transform:uppercase;
+    font-size:clamp(1rem,3.2vw,1.9rem);text-decoration:none;color:var(--ink);word-break:break-word}
+  .mailbig:hover{color:var(--accent)}
+  @media(min-width:900px){.follow-grid{grid-template-columns:1fr 1fr}.follow-left{border-right:2px solid var(--ink)}}
+
+  footer{background:var(--ink);color:var(--paper)}
+  .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:26px 20px;
+    font-family:"IBM Plex Mono";font-size:12px;text-transform:uppercase;letter-spacing:.08em;max-width:var(--maxw);margin-inline:auto}
+  .foot .r{color:var(--accent)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="badge" aria-hidden="true">PREVIEW MOCKUP · OPTION B</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Atheos Studios home"><span class="mk" aria-hidden="true"></span>ATHEOS</a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#games">Games</a>
+      <a href="#about">Studio</a>
+      <a href="#follow">Contact</a>
+      <a class="cta" href="https://graveerrorgame.com">Grave Error</a>
+    </nav>
+    <button class="navtoggle" id="navbtn" aria-expanded="false" aria-controls="mobilemenu">Menu +</button>
+  </div>
+  <div id="mobilemenu">
+    <a href="#games">Games</a>
+    <a href="#about">Studio</a>
+    <a href="#follow">Contact</a>
+    <a href="https://graveerrorgame.com">Grave Error →</a>
+  </div>
+</header>
+
+<main id="main">
+  <a id="top"></a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-tag">
+        <span>Independent Game Studio</span>
+        <span class="r">Est. 2024 — atheosstudios.com</span>
+      </div>
+      <h1 class="bigword">ATHEOS<br><span class="out">STUDIOS</span></h1>
+      <div class="hero-mid">
+        <p class="mission">We make games for the moment the gods stop answering — <b>and something else does.</b></p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://graveerrorgame.com">Play Grave Error →</a>
+          <a class="btn" href="#games">Our games</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span>SURVIVE THE NIGHT</span><span>·</span><span><b>GRAVE ERROR</b></span><span>·</span><span>COMING SOON</span><span>·</span><span>NO GODS, NO SAVES</span><span>·</span><span>SURVIVE THE NIGHT</span><span>·</span><span><b>GRAVE ERROR</b></span><span>·</span><span>COMING SOON</span><span>·</span><span>NO GODS, NO SAVES</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- GAMES -->
+  <section class="sec" id="games">
+    <div class="sec-head">
+      <h2>The Games</h2>
+      <span class="idx">01 / CATALOGUE</span>
+    </div>
+    <article class="feature">
+      <div class="keyart" role="img" aria-label="Grave Error key art: a stark tombstone silhouette split by a jagged crack under a cold sky.">
+        <svg viewBox="0 0 560 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="560" height="560" fill="#141310"/>
+          <!-- halftone sky dots -->
+          <g fill="#2a2823">
+            <circle cx="60" cy="60" r="3"/><circle cx="120" cy="90" r="2"/><circle cx="200" cy="50" r="3"/>
+            <circle cx="300" cy="80" r="2"/><circle cx="420" cy="55" r="3"/><circle cx="500" cy="100" r="2"/>
+            <circle cx="90" cy="150" r="2"/><circle cx="470" cy="150" r="3"/><circle cx="380" cy="130" r="2"/>
+          </g>
+          <!-- ground -->
+          <rect y="420" width="560" height="140" fill="#0c0b09"/>
+          <path d="M0 420 L560 420 L560 440 L0 452 Z" fill="#1c1a16"/>
+          <!-- tombstone -->
+          <g>
+            <path d="M180 430 L180 220 a100 100 0 0 1 200 0 L380 430 Z" fill="#e9e5da"/>
+            <!-- red crack -->
+            <path d="M282 150 L268 230 L296 250 L262 330 L292 350 L270 430" fill="none" stroke="#d8341f" stroke-width="7" stroke-linejoin="round"/>
+            <!-- engraved text marks -->
+            <rect x="220" y="270" width="120" height="8" fill="#141310" opacity=".55"/>
+            <rect x="235" y="292" width="90" height="8" fill="#141310" opacity=".45"/>
+            <rect x="245" y="314" width="70" height="8" fill="#141310" opacity=".35"/>
+          </g>
+          <!-- clawing hand -->
+          <g stroke="#e9e5da" stroke-width="8" stroke-linecap="round" fill="none" opacity=".9">
+            <path d="M110 470 v-46 M128 470 v-60 M146 470 v-44 M164 468 v-52"/>
+          </g>
+          <g stroke="#e9e5da" stroke-width="8" stroke-linecap="round" fill="none" opacity=".9">
+            <path d="M400 476 v-40 M418 476 v-56 M436 476 v-42"/>
+          </g>
+        </svg>
+        <span class="coming">● Coming soon</span>
+      </div>
+      <div class="fbody">
+        <div class="titlebar">
+          <h3>Grave<br>Error</h3>
+          <span class="genre">Undead / Survival Horror</span>
+        </div>
+        <p>A burial done wrong. A town that won't stay dead. You wake into a mistake the size of a graveyard and the only fix is to last one more night — then the next. Board the windows. Ration the light. Learn what the dead remember. Grave Error is a lean, punishing survival horror about the arithmetic of staying alive when the math keeps turning against you.</p>
+        <dl class="specs">
+          <div><dt>Genre</dt><dd>Survival Horror</dd></div>
+          <div><dt>Mode</dt><dd>Single-player</dd></div>
+          <div><dt>Platforms</dt><dd>PC / Console</dd></div>
+          <div><dt>Status</dt><dd style="color:var(--accent)">Coming Soon</dd></div>
+        </dl>
+        <a class="btn btn-primary" href="https://graveerrorgame.com">Learn more →</a>
+      </div>
+    </article>
+    <div class="slots">
+      <div class="slot">
+        <span class="n">02</span>
+        <h4>Project II</h4>
+        <p>Untitled. Early, ugly, and promising. We're not talking yet.</p>
+        <span class="st">In Dev</span>
+      </div>
+      <div class="slot">
+        <span class="n">03</span>
+        <h4>Reserved Slot</h4>
+        <p>A placeholder for the next idea we can't shake loose.</p>
+        <span class="st">Concept</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="sec-head">
+      <h2>The Studio</h2>
+      <span class="idx">02 / WHO</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-left">
+        <h2>Small<br>Team.<br>Long<br>Nights.</h2>
+      </div>
+      <div class="about-right">
+        <p><b>Atheos Studios is an independent developer</b> working at the ugly, honest end of horror. We believe fear is a design problem — pacing, scarcity, and the dread of a plan that's already falling apart. No committee. No filler. Just a small crew making the kind of games that follow you home.</p>
+        <p class="pull">We build the dark and then we ask you to survive it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLLOW -->
+  <section class="sec" id="follow">
+    <div class="sec-head">
+      <h2>Contact</h2>
+      <span class="idx">03 / SIGNAL</span>
+    </div>
+    <div class="follow-grid">
+      <div class="follow-left">
+        <h2>Follow<br>Along.</h2>
+        <p>We post when there's something real to show. Get on the list, or just come haunt the socials.</p>
+        <a class="mailbig" href="mailto:hello@atheosstudios.com">hello@<wbr>atheosstudios.com</a>
+      </div>
+      <div class="follow-right">
+        <div class="soclist" aria-label="Social links">
+          <a href="#" aria-label="Atheos Studios on X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-7-6.2 7H1.4l8.1-9.3L1 2h7.1l4.9 6.5L18.9 2Zm-2.4 18h1.9L7.6 3.9H5.6L16.5 20Z"/></svg>
+            X / Twitter</a>
+          <a href="#" aria-label="Atheos Studios on Discord">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 5.3A17 17 0 0 0 15.7 4l-.2.4a15.6 15.6 0 0 1 3.9 1.2 13 13 0 0 0-11 0A15.6 15.6 0 0 1 8.5 4.4L8.3 4A17 17 0 0 0 4 5.3C1.3 9.3.6 13.2.9 17a17 17 0 0 0 5.2 2.6l.6-1a11 11 0 0 1-1.8-.9l.5-.3a12.2 12.2 0 0 0 10.4 0l.5.3a11 11 0 0 1-1.8.9l.6 1A17 17 0 0 0 23 17c.4-4.5-.7-8.4-3-11.7ZM8.3 14.6c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 2 1 1.9 2.1c0 1.2-.8 2.1-1.9 2.1Zm7.4 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 2 1 1.9 2.1c0 1.2-.8 2.1-1.9 2.1Z"/></svg>
+            Discord</a>
+          <a href="#" aria-label="Atheos Studios on YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg>
+            YouTube</a>
+          <a href="#" aria-label="Atheos Studios on Steam">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-9.9 8.7l5.4 2.2a2.8 2.8 0 0 1 1.6-.5h.2l2.4-3.5v-.1a3.8 3.8 0 1 1 3.8 3.8h-.1l-3.4 2.5v.1a2.8 2.8 0 0 1-5.6.2l-3.8-1.6A10 10 0 1 0 12 2ZM8.4 17.2l-1.2-.5a2.1 2.1 0 0 0 3.9-.8 2.1 2.1 0 0 0-2.8-2l1.3.5a1.6 1.6 0 0 1-1.2 2.8Zm7.9-6.7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm0-.8a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4Z"/></svg>
+            Steam</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>© 2026 Atheos Studios</span>
+    <span class="r">No gods · No saves · Only nights</span>
+    <span>atheosstudios.com</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.getElementById('navbtn'),menu=document.getElementById('mobilemenu');
+    btn.addEventListener('click',function(){
+      var open=menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.textContent=open?'Close ×':'Menu +';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu +';});
+    });
+  })();
+</script>
+</body>
+</html>

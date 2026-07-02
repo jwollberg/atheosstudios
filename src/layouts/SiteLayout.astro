@@ -1,0 +1,37 @@
+---
+import "../styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = "Atheos Studios — Independent Game Studio",
+  description = "Atheos Studios is an independent game studio making realism-first survival games. First title: Grave Error — a top-down zombie survival game, coming to PC.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FBFAF7" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/brand-kit/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand-kit/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand-kit/icon-16.png" />
+    <link rel="apple-touch-icon" href="/brand-kit/icon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
