@@ -42,5 +42,5 @@ mysterious, human — **not** corporate.
   **never imply a team and never say solo**. **No dates anywhere.** No contact/email/social section
   (Josh removed it).
 
-**Status:** live at atheosstudios.com (GitHub Pages behind Cloudflare; confirmed 2026-10-09). Nyx is built on
-branch `redesign-options`, waiting to be pushed to `main` (push = deploy).
+**Status:** Nyx is live at atheosstudios.com (GitHub Pages behind Cloudflare; shipped 2026-10-09). Push to
+`main` = deploy.
