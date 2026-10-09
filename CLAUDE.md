@@ -58,8 +58,9 @@ mysterious, human — **not** corporate.
 "ancient Greek, but modern" with **three projects**: Grave Error, **Elderdeep** (cute dig-and-build platformer,
 infinite procedural world; facts from `C:\Projects\Elderdeep\README.md`) and **Holdout** (working title; top-down
 survival tower defense; facts from `C:\Projects\Tower Defense Game\docs\vision.md`). Four options in
-`design-options/redesign/` (branch `redesign-options`); waiting on Josh's pick and copy sign-off (see the
-"Things to check" list on `redesign/index.html`). The "realism-first survival" studio line no longer fits Elderdeep.
+`design-options/redesign/` (branch `redesign-options`). **Josh picked Option 2 "Nyx" (2026-10-09)** — dark, paper
+on ink plus a deeper ink #1E2228, turning star-dial hero, each game as a constellation. Next: rewrite all copy
+from each game's lore, then rebuild Nyx as the real Astro site. The "realism-first survival" studio line no longer fits Elderdeep.
 
 **Status:** built; repo + GitHub Pages live. Domain still on Google Sites — must be
 freed and repointed before this site serves at atheosstudios.com (see master guide).
