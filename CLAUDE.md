@@ -57,7 +57,7 @@ mysterious, human — **not** corporate.
 **Redesign in progress (2026-10-09):** Josh dislikes the Monolith elements (keeps colors, fonts, logo) and wants
 "ancient Greek, but modern" with **three projects**: Grave Error, **Elderdeep** (cute dig-and-build platformer,
 infinite procedural world; facts from `C:\Projects\Elderdeep\README.md`) and **Holdout** (working title; top-down
-survival tower defense; facts from `C:\Projects\Tower Defense Game\docsision.md`). Four options in
+survival tower defense; facts from `C:\Projects\Tower Defense Game\docs\vision.md`). Four options in
 `design-options/redesign/` (branch `redesign-options`); waiting on Josh's pick and copy sign-off (see the
 "Things to check" list on `redesign/index.html`). The "realism-first survival" studio line no longer fits Elderdeep.
 
