@@ -54,5 +54,12 @@ mysterious, human — **not** corporate.
   team** ("small team", "crew") **and never say solo**. The old "Small Team. Long
   Nights." headline was replaced for this reason.
 
+**Redesign in progress (2026-10-09):** Josh dislikes the Monolith elements (keeps colors, fonts, logo) and wants
+"ancient Greek, but modern" with **three projects**: Grave Error, **Elderdeep** (cute dig-and-build platformer,
+infinite procedural world; facts from `C:\Projects\Elderdeep\README.md`) and **Holdout** (working title; top-down
+survival tower defense; facts from `C:\Projects\Tower Defense Game\docsision.md`). Four options in
+`design-options/redesign/` (branch `redesign-options`); waiting on Josh's pick and copy sign-off (see the
+"Things to check" list on `redesign/index.html`). The "realism-first survival" studio line no longer fits Elderdeep.
+
 **Status:** built; repo + GitHub Pages live. Domain still on Google Sites — must be
 freed and repointed before this site serves at atheosstudios.com (see master guide).

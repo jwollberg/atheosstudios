@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atheos Redesign Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBFAF7;--paper-2:#F2F0EA;--ink:#262B33;--ink-2:#3E4450;--muted:#646B76;--line-soft:#DDD9D0;
+  --display:"Marcellus",Georgia,serif;--sans:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1240px;margin:auto;padding:0 24px}
+header{padding:56px 0 34px;border-bottom:1px solid var(--ink)}
+.eyebrow{font-weight:500;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin:14px 0 0}
+header p.intro{max-width:70ch;color:var(--ink-2);margin:18px 0 0}
+.kept{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.kept li{display:flex;align-items:center;gap:8px;font-size:13px;border:1px solid var(--line-soft);padding:6px 12px;background:#fff}
+.sw{width:14px;height:14px;border:1px solid rgba(0,0,0,.15)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 32px;padding:44px 0 20px}
+.opt{display:flex;flex-direction:column}
+.thumb{position:relative;aspect-ratio:1440/900;overflow:hidden;border:1px solid var(--ink);background:var(--paper-2);display:block}
+.thumb iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:0 0;pointer-events:none}
+.thumb::after{content:"Open full page →";position:absolute;inset:auto 12px 12px auto;background:var(--ink);color:var(--paper);font:500 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;opacity:0;transition:opacity .2s}
+.thumb:hover::after,.thumb:focus-visible::after{opacity:1}
+.opt h2{font-family:var(--display);font-weight:400;font-size:1.9rem;margin:20px 0 0;display:flex;align-items:baseline;gap:14px}
+.opt h2 small{font:500 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.opt .one{margin:6px 0 0;font-size:1.05rem}
+.opt dl{margin:14px 0 0;border-top:1px solid var(--line-soft)}
+.opt dl div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:.94rem;color:var(--ink-2)}
+.opt dt{font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.opt .go{margin-top:16px;align-self:flex-start;font:500 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.notes{margin:40px 0 80px;border-top:1px solid var(--ink);padding-top:26px;display:grid;grid-template-columns:1fr 2fr;gap:32px}
+.notes h2{font-family:var(--display);font-weight:400;font-size:1.7rem;margin:10px 0 0}
+.notes ul{margin:0;padding-left:20px;color:var(--ink-2)}
+.notes li{margin:0 0 10px}
+.notes b{color:var(--ink);font-weight:600}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.notes{grid-template-columns:1fr;gap:12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">atheosstudios.com · redesign</p>
+    <h1>Four directions: ancient Greek, made modern</h1>
+    <p class="intro">Each option is a full one-page mockup with all three games: Grave Error, Elderdeep and Holdout. They all use the same words, so you're judging the look, not the copy. Click a preview to open it full size, and try each one on your phone too. Pieces mix and match freely, for example Option 2's star dial with Option 4's stone tablets.</p>
+    <ul class="kept" aria-label="What stays the same">
+      <li><span class="sw" style="background:#2A2E34"></span>Slate #2A2E34</li>
+      <li><span class="sw" style="background:#FBFAF7"></span>Paper #FBFAF7</li>
+      <li><span class="sw" style="background:#262B33"></span>Ink #262B33</li>
+      <li style="font-family:var(--display);font-size:15px">Marcellus</li>
+      <li>Jost</li>
+      <li>Laurel logo</li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <article class="opt">
+      <a class="thumb" href="1-stoa.html" aria-label="Open Option 1, Stoa"><iframe src="1-stoa.html" title="Option 1 preview" tabindex="-1" loading="eager"></iframe></a>
+      <h2>Stoa <small>Option 1</small></h2>
+      <p class="one">Light and airy. A temple front drawn in fine lines.</p>
+      <dl>
+        <div><dt>Greek</dt><dd>Pediment with ΑΘΕΟΣ carved in, fluted columns and stepped base framing the headline; the three games stand between columns under a frieze, each with its own emblem in the frieze panel.</dd></div>
+        <div><dt>Modern</dt><dd>Hairline drawing, lots of white space, centered and calm.</dd></div>
+        <div><dt>Feels</dt><dd>Classical, dignified, quiet.</dd></div>
+      </dl>
+      <a class="go" href="1-stoa.html">Open Stoa →</a>
+    </article>
+
+    <article class="opt">
+      <a class="thumb" href="2-nyx.html" aria-label="Open Option 2, Nyx"><iframe src="2-nyx.html" title="Option 2 preview" tabindex="-1" loading="eager"></iframe></a>
+      <h2>Nyx <small>Option 2</small></h2>
+      <p class="one">Dark and cinematic. Your colors turned over: paper type on deep slate.</p>
+      <dl>
+        <div><dt>Greek</dt><dd>A slowly turning bronze star-dial (after the Antikythera mechanism) with the three game names engraved on its ring; each game is drawn as its own constellation.</dd></div>
+        <div><dt>Modern</dt><dd>Full-screen hero, a header that solidifies as you scroll, rounded pill tags.</dd></div>
+        <div><dt>Feels</dt><dd>Mythic, mysterious, a game-trailer mood.</dd></div>
+      </dl>
+      <a class="go" href="2-nyx.html">Open Nyx →</a>
+    </article>
+
+    <article class="opt">
+      <a class="thumb" href="3-amphora.html" aria-label="Open Option 3, Amphora"><iframe src="3-amphora.html" title="Option 3 preview" tabindex="-1" loading="eager"></iframe></a>
+      <h2>Amphora <small>Option 3</small></h2>
+      <p class="one">Bold and graphic. Ink figures in the style of early Greek painted pottery.</p>
+      <dl>
+        <div><dt>Greek</dt><dd>A painted vase in the hero shows all three games; each game gets a full-width painted frieze (the horde, the deep, the camp), framed in Greek-key and zigzag bands.</dd></div>
+        <div><dt>Modern</dt><dd>Flat, poster-like shapes and a symmetrical header with the logo in the middle.</dd></div>
+        <div><dt>Feels</dt><dd>The most distinctive of the four, and the most playful.</dd></div>
+      </dl>
+      <a class="go" href="3-amphora.html">Open Amphora →</a>
+    </article>
+
+    <article class="opt">
+      <a class="thumb" href="4-stele.html" aria-label="Open Option 4, Stele"><iframe src="4-stele.html" title="Option 4 preview" tabindex="-1" loading="eager"></iframe></a>
+      <h2>Stele <small>Option 4</small></h2>
+      <p class="one">Modern and minimal. Mostly type, with carved stone.</p>
+      <dl>
+        <div><dt>Greek</dt><dd>Each game is a carved stone tablet marked Γ, Ε, Η; Greek letters number everything.</dd></div>
+        <div><dt>Modern</dt><dd>Big editorial headline on a strict grid. Click a tablet and its game's details open below.</dd></div>
+        <div><dt>Feels</dt><dd>Sharp, confident, the most "studio site" of the four.</dd></div>
+      </dl>
+      <a class="go" href="4-stele.html">Open Stele →</a>
+    </article>
+  </div>
+
+  <section class="notes" aria-labelledby="notes-h">
+    <div><p class="eyebrow">Before we build</p><h2 id="notes-h">Things to check</h2></div>
+    <ul>
+      <li><b>New headline:</b> "Worlds that run on their own rules." The old line, "realism-first survival games," doesn't fit Elderdeep, so it's replaced.</li>
+      <li><b>New studio claim:</b> every game is built in-house, "engine and all." That's true of all three projects, but say so if you'd rather not advertise it.</li>
+      <li><b>Statuses:</b> Grave Error "Coming eventually," Elderdeep "In development," Holdout "Early development," with a "Working title" tag. All three say PC.</li>
+      <li><b>Taglines are new:</b> "An endless world, all the way down." (Elderdeep) and "Hold the line. Grow the camp." (Holdout).</li>
+      <li><b>Only Grave Error links out.</b> Elderdeep and Holdout say "More to come" until they have pages.</li>
+      <li><b>Art is placeholder.</b> The drawings stand in for real key art or screenshots, which can drop into the same spots later.</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+(function(){
+  function fit(){document.querySelectorAll(".thumb").forEach(function(t){var f=t.querySelector("iframe");f.style.transform="scale("+(t.clientWidth/1440)+")";});}
+  fit(); addEventListener("resize",fit);
+})();
+</script>
+</body>
+</html>

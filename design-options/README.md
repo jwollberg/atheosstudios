@@ -1,5 +1,16 @@
 # Atheos Studios — Website Design Mockups
 
+## Redesign, Oct 2026 (`redesign/`)
+
+Josh asked for a redesign: keep the colors, fonts and laurel logo, drop the Monolith elements, and aim for an ancient Greek feel made modern, with all three projects shown (Grave Error, Elderdeep, Holdout). Open `redesign/index.html` to compare the four options. Each is self-contained (logo and emblems are inlined; only the Google Fonts link is external) and all four share the same copy.
+
+- **1 · Stoa**: light, a temple front drawn in hairlines; the games stand between columns under a triglyph frieze.
+- **2 · Nyx**: dark (paper on ink plus a deeper ink, #1E2228); a turning Antikythera-style star dial; each game as a constellation.
+- **3 · Amphora**: ink figures after Geometric-period Greek pottery; a painted vase hero and a painted frieze per game.
+- **4 · Stele**: modern editorial type; the games are carved stone tablets (Γ Ε Η) that work as tabs.
+
+## First round (2025, chose B · Monolith)
+
 Three standalone concept mockups for **Atheos Studios** (atheosstudios.com), an independent video game studio. Each is a single, self-contained HTML file that opens by double-click — all visuals are built from CSS gradients, CSS shapes, and inline SVG (no external images, no build step, works fully offline). Every option is responsive (mobile-first, tuned at 375px and 1440px), keyboard-accessible with visible focus states and AA contrast, respects `prefers-reduced-motion`, and features the studio's first game **Grave Error** (undead survival horror, "Coming soon") with a clear button linking to https://graveerrorgame.com.
 
 Open any file directly in a browser to preview. A fixed corner badge marks each as a preview mockup.
