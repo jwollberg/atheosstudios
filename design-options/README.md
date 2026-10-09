@@ -1,6 +1,6 @@
 # Atheos Studios — Website Design Mockups
 
-## Redesign, Oct 2026 (`redesign/`)
+## Redesign, Oct 2026 (`redesign/`) — Josh picked 2 · Nyx, now built as the real site
 
 Josh asked for a redesign: keep the colors, fonts and laurel logo, drop the Monolith elements, and aim for an ancient Greek feel made modern, with all three projects shown (Grave Error, Elderdeep, Holdout). Open `redesign/index.html` to compare the four options. Each is self-contained (logo and emblems are inlined; only the Google Fonts link is external) and all four share the same copy.
 

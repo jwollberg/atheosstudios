@@ -4,8 +4,7 @@ Read the master workspace guide first: [`..\CLAUDE.md`](../CLAUDE.md). It covers
 shared build recipe (Astro + GitHub Pages), the publish steps, and the domain-freeing
 plan. This file only covers what's specific to Atheos Studios.
 
-- **Domain:** atheosstudios.com — *currently on Google Sites; must be freed first
-  (see master guide).*
+- **Domain:** atheosstudios.com — served by GitHub Pages (through Cloudflare).
 - **What it is:** Josh's independent video game studio.
 - **Must-have:** a prominent link out to the studio's first game, **Grave Error**
   (graveerrorgame.com — see the `Website-Grave Error` folder).
@@ -16,51 +15,32 @@ Bold, confident indie studio. The name "Atheos" reads cosmic / defiant / mythic 
 lean into a striking, cinematic, slightly dark modern look. Voice: assured, a little
 mysterious, human — **not** corporate.
 
-## Likely pages / sections
-
-- **Hero** — studio name/logo, one-line mission, primary button → Grave Error.
-- **Games** — a featured card for *Grave Error* (key art, tagline, "Learn more" →
-  graveerrorgame.com), with room for future titles.
-- **About the studio** — short story / mission, who's behind it.
-- **Follow / contact** — social links + email; business & press inquiries.
-- *(Later)* News / devlog.
-
 ## Selected design & locked decisions
 
-- **Design: Option B — "Monolith"** (bold editorial / brutalist: huge type, strong grid,
-  full-bleed rules). Permanent Atheos design; built as the real Astro + Tailwind site.
-  The mockup's red accent was dropped when the brand kit arrived — the site is now
-  **monochrome**: slate/ink blocks on paper. Mockups remain in `design-options/`.
-- **Brand kit (applied):** lives in `brand-kit/` at the repo root; served files
-  (favicon + logo) are copied into `public/brand-kit/`. Palette: **accent slate
-  `#2A2E34`**, paper `#FBFAF7` (backgrounds), ink `#262B33` (text/borders). Fonts:
-  **Marcellus** for headings/display (single weight — never bold it) + **Jost** for body
-  and the tracked-caps labels. Full laurel lockup (`logo.png`) sits top-left in the header.
-- **Copy is grounded in the real game.** Grave Error facts come from
-  https://www.atheosstudios.com/grave-error plus Josh's corrections — **3D** zombie
-  survival (Josh: "now a 3D project, same feature set/systems" — the old site page
-  says top-down 2D; don't reintroduce "top-down"), HACK-nanobot premise (player is a
-  "Null"), **single-player AND multiplayer**, **PC only** (no console), philosophy
-  "realism first." **No dates on the site** — Josh replaced "Coming soon / Summer
-  2026" with **"Coming eventually"** (used in the ticker, key-art chip, and status
-  cell). Don't reinvent lore; re-derive from that page (or Josh) when updating.
-- **Josh removed from the mockup:** the "Play Grave Error" button (game isn't out —
-  CTAs say "Grave Error →"/"Learn more"), the ticker phrases "NO GODS, NO SAVES" and
-  "SURVIVE THE NIGHT" (and the matching footer line), the placeholder game slots
-  ("Project II" / "Reserved Slot"), the social-links grid, the pull quote "We build
-  the dark…", and the **entire Contact section** — the site intentionally shows no
-  email/contact at all. Sections are just: hero, Games, Studio.
-- **Voice guardrail:** same as the other sites — neutral brand "we"; **never imply a
-  team** ("small team", "crew") **and never say solo**. The old "Small Team. Long
-  Nights." headline was replaced for this reason.
+- **Design: "Nyx"** (picked 2026-10-09 from four options in `design-options/redesign/`; replaced the
+  2025 "Monolith" build). Dark: paper type on ink, plus a deeper ink `#1E2228`. A slowly turning
+  Antikythera-style star dial behind the hero, a star field, and each game drawn as a constellation
+  (its emblem plus stars). Greek touches: Γ Ε Η and Α Β Γ, Roman numerals. Sections: hero, In the
+  Works (games), Studio, footer.
+- **Brand kit** (unchanged): `brand-kit/`; slate `#2A2E34`, paper `#FBFAF7`, ink `#262B33`;
+  **Marcellus** (single weight, never bold it) + **Jost**. The laurel lockup and the three game emblems
+  are SVG symbols in `src/components/Sprite.astro`, recolored with `currentColor`.
+- **Three games.** Copy lives in the `games` array at the top of `src/pages/index.astro`. Ground every
+  claim in the game's own docs; don't invent lore.
+  - **Grave Error** (`C:\Projects\Grave Error\LORE.md`, `docs\vision.md`): 3D first-person zombie
+    survival, solo or co-op, PC, "Coming eventually". The risen are "Hacks"; the player is a "Null";
+    HACK program, Core Update 3.0. Never say top-down/2D, Unity, Early Access, Steam/wishlist, or a
+    date. Links to graveerrorgame.com. The tagline "You don't beat this world. You outlast it." is Josh's.
+  - **Elderdeep** (`C:\Projects\Elderdeep\README.md`, `LORE.md`, esp. its Register section: plain, dry,
+    nothing grand; no gods/temples, quests, chosen ones, ancient evils, kings). 2D dig-and-build
+    platformer, "In development". Don't link its private tracker.
+  - **Holdout** (`C:\Projects\Tower Defense Game\docs\vision.md`): Josh calls it "Holdout (working
+    title)"; its docs call Holdout the code name. Top-down survival tower defense, rural America, its
+    own world (not Grave Error's). "Early prototype": community, towers and co-op are planned, not built.
+- **Voice:** plain, specific, a little wry ("Games made the long way.", "Coming eventually"). Avoid
+  AI-sounding copy: stacked long dashes, rule-of-three lists, slogan filler. Neutral brand "we";
+  **never imply a team and never say solo**. **No dates anywhere.** No contact/email/social section
+  (Josh removed it).
 
-**Redesign in progress (2026-10-09):** Josh dislikes the Monolith elements (keeps colors, fonts, logo) and wants
-"ancient Greek, but modern" with **three projects**: Grave Error, **Elderdeep** (cute dig-and-build platformer,
-infinite procedural world; facts from `C:\Projects\Elderdeep\README.md`) and **Holdout** (working title; top-down
-survival tower defense; facts from `C:\Projects\Tower Defense Game\docs\vision.md`). Four options in
-`design-options/redesign/` (branch `redesign-options`). **Josh picked Option 2 "Nyx" (2026-10-09)** — dark, paper
-on ink plus a deeper ink #1E2228, turning star-dial hero, each game as a constellation. Next: rewrite all copy
-from each game's lore, then rebuild Nyx as the real Astro site. The "realism-first survival" studio line no longer fits Elderdeep.
-
-**Status:** built; repo + GitHub Pages live. Domain still on Google Sites — must be
-freed and repointed before this site serves at atheosstudios.com (see master guide).
+**Status:** live at atheosstudios.com (GitHub Pages behind Cloudflare; confirmed 2026-10-09). Nyx is built on
+branch `redesign-options`, waiting to be pushed to `main` (push = deploy).

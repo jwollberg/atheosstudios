@@ -1,176 +1,314 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import Sprite from "../components/Sprite.astro";
+
+// The three games. Copy is grounded in each game's own docs:
+// Grave Error  -> C:\Projects\Grave Error\LORE.md + docs\vision.md
+// Elderdeep    -> C:\Projects\Elderdeep\README.md + LORE.md
+// Holdout      -> C:\Projects\Tower Defense Game\docs\vision.md
+// Each game is drawn as a constellation: its emblem from the sprite, plus stars at the emblem's corners.
+type Star = [cx: number, cy: number, r: number];
+type Label = [x: number, y: number, text: string];
+
+const games: {
+  id: string;
+  num: string;
+  emblem: string;
+  chartLabel: string;
+  genre: string;
+  title: string;
+  workingTitle?: boolean;
+  tag: string;
+  desc: string;
+  facts: string[];
+  status: string;
+  link?: { href: string; text: string };
+  stars: Star[];
+  labels: Label[];
+}[] = [
+  {
+    id: "grave-error",
+    num: "I",
+    emblem: "em-ge",
+    chartLabel: "Γ · The Grave",
+    genre: "First-person zombie survival",
+    title: "Grave Error",
+    tag: "You don't beat this world. You outlast it.",
+    desc: "It began with a software update. The HACK program put adaptive nanobots in billions of minds, then Core Update 3.0 shipped with a fatal flaw and the dead got back up. You're a Null, one of the few the implants never took. The Hacks are whoever used to live here. They track you by sound and by smell, they slow down in daylight, and only a ruined brain keeps one down.",
+    facts: ["3D, first-person", "Solo or co-op", "PC"],
+    status: "Coming eventually",
+    link: { href: "https://graveerrorgame.com", text: "graveerrorgame.com" },
+    stars: [[38, 100, 1.3], [82, 100, 1.1], [38, 54, 1.5], [82, 54, 1.2], [60, 32, 2], [57, 52, 0.9], [56, 74, 1], [58, 100, 0.8], [94, 24, 1.7], [25, 84, 0.9], [95, 82, 0.9], [8, 100, 0.7], [112, 100, 0.7]],
+    labels: [[63, 29, "α"], [97, 21, "β"], [41, 51, "γ"]],
+  },
+  {
+    id: "elderdeep",
+    num: "II",
+    emblem: "em-ed",
+    chartLabel: "Ε · The Deep",
+    genre: "2D dig-and-build platformer",
+    title: "Elderdeep",
+    tag: "The deep is somewhere you walk to.",
+    desc: "A cute dig-and-build game on a world that keeps going. Undercut a cliff and it comes down on you. Chop through a trunk and the tree falls over. Where water meets lava you get obsidian. Six cavern roads run underneath it all, and the towns along them are full of people who each remember what you did to them. Humans, dwarves and goblins all dig at the same speed. Only the humans have to duck.",
+    facts: ["2D, endless world", "Solo or multiplayer", "PC"],
+    status: "In development",
+    stars: [[34, 26, 1.9], [34, 50, 1], [8, 50, 0.7], [112, 50, 0.7], [72, 50, 1.1], [88, 50, 1.1], [72, 88, 1], [88, 88, 1], [66, 96, 1.6], [30, 90, 1.2], [108, 21, 1.3], [92, 42, 0.9]],
+    labels: [[37, 22, "α"], [69, 94, "β"], [111, 19, "γ"]],
+  },
+  {
+    id: "holdout",
+    num: "III",
+    emblem: "em-ho",
+    chartLabel: "Η · The Hold",
+    genre: "Top-down survival tower defense",
+    title: "Holdout",
+    workingTitle: true,
+    tag: "Everyone you save gets a job.",
+    desc: "A few weeks into the outbreak, somewhere in rural America, you have a pistol, a knife and a day's food. The dead walk in from the edges of the map, and each one drops whatever it was carrying when it turned. The survivors you take in all have names, and they all need a post: up the watchtower, behind the sandbags, in the medic tent. Gunfire works. It also brings more of them.",
+    facts: ["Top-down", "Solo or co-op", "PC"],
+    status: "Early prototype",
+    stars: [[60, 26, 2], [69, 19, 1], [44, 52, 1.2], [76, 52, 1.2], [48, 100, 1], [72, 100, 1], [15, 79, 0.9], [24, 77, 1.1], [33, 80, 0.8], [87, 80, 0.8], [96, 77, 1.1], [105, 79, 0.9]],
+    labels: [[63, 27, "α"], [99, 74, "β"], [18, 74, "γ"]],
+  },
+];
+
+const tenets = [
+  { n: "Α", title: "Our own engines", text: "Every game here runs on technology we built for it." },
+  { n: "Β", title: "Generated worlds", text: "Maps come from a seed, so the next one won't look like the last." },
+  { n: "Γ", title: "No dates yet", text: "You'll see a date here when there's a game to go with it." },
+];
 ---
 
 <SiteLayout>
+  <Sprite />
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site">
-    <div class="wrap nav">
+  <header class="hdr" id="hdr">
+    <div class="wrap">
       <a class="brand" href="#top" aria-label="Atheos Studios home">
-        <img class="logo" src="/brand-kit/logo.png" alt="Atheos Studios" width="972" height="330" />
+        <svg role="img" aria-label="Atheos Studios"><use href="#logo"></use></svg>
       </a>
-      <nav class="navlinks" aria-label="Primary">
+      <button class="menubtn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Primary">
         <a href="#games">Games</a>
-        <a href="#about">Studio</a>
-        <a class="cta" href="https://graveerrorgame.com">Grave Error</a>
+        <a href="#studio">Studio</a>
+        <a class="cta" href="https://graveerrorgame.com">Grave Error ↗</a>
       </nav>
-      <button class="navtoggle" id="navbtn" aria-expanded="false" aria-controls="mobilemenu">Menu +</button>
-    </div>
-    <div id="mobilemenu">
-      <a href="#games">Games</a>
-      <a href="#about">Studio</a>
-      <a href="https://graveerrorgame.com">Grave Error →</a>
     </div>
   </header>
 
   <main id="main">
-    <a id="top"></a>
+    <section class="hero" id="top" aria-labelledby="h1">
+      <svg class="sky" id="sky" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1600 1000"></svg>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="wrap hero-inner">
-        <div class="hero-tag lbl">
-          <span>Independent Game Studio</span>
-          <span class="r">Est. 2024 — atheosstudios.com</span>
+      <!-- The dial: rings after the Antikythera mechanism, turning slowly -->
+      <svg class="dial" viewBox="0 0 1000 1000" aria-hidden="true">
+        <defs><path id="ring" d="M500 500m-392 0a392 392 0 1 1 784 0a392 392 0 1 1-784 0"></path></defs>
+        <g fill="none" stroke="currentColor">
+          <circle cx="500" cy="500" r="470" stroke-opacity=".12"></circle>
+          <g class="spin rev"><circle cx="500" cy="500" r="452" stroke-opacity=".22" stroke-width="10" stroke-dasharray="1.2 8.66"></circle></g>
+          <circle cx="500" cy="500" r="436" stroke-opacity=".16"></circle>
+          <circle cx="500" cy="500" r="356" stroke-opacity=".14"></circle>
+          <g class="spin fast"><circle cx="500" cy="500" r="330" stroke-opacity=".1" stroke-width="16" stroke-dasharray="6 8.6"></circle></g>
+          <circle cx="500" cy="500" r="312" stroke-opacity=".16"></circle>
+          <g class="spin rev">
+            <circle cx="500" cy="500" r="250" stroke-opacity=".14" stroke-dasharray="2 6"></circle>
+            <circle cx="250" cy="500" r="5" fill="currentColor" fill-opacity=".55" stroke="none"></circle>
+            <circle cx="750" cy="500" r="3" fill="currentColor" fill-opacity=".45" stroke="none"></circle>
+          </g>
+          <g class="spin">
+            <circle cx="500" cy="500" r="190" stroke-opacity=".1"></circle>
+            <circle cx="500" cy="310" r="4" fill="currentColor" fill-opacity=".5" stroke="none"></circle>
+          </g>
+          <path d="M500 20V180M500 820V980M20 500H180M820 500H980" stroke-opacity=".12"></path>
+        </g>
+        <g class="spin">
+          <text><textPath href="#ring" textLength="2462" lengthAdjust="spacing">GRAVE ERROR · ELDERDEEP · HOLDOUT · GRAVE ERROR · ELDERDEEP · HOLDOUT · </textPath></text>
+        </g>
+      </svg>
+
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal>Independent game studio</p>
+        <h1 id="h1" data-reveal>Games made the long way.</h1>
+        <p class="lede" data-reveal>
+          We write our own engines instead of licensing one, and every map is generated from scratch. That takes a
+          while. Three games are in the works, and none of them has a release date yet.
+        </p>
+        <div class="actions" data-reveal>
+          <a class="btn btn-solid" href="https://graveerrorgame.com">Grave Error <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#games">See the games</a>
         </div>
-        <h1 class="bigword">ATHEOS<br /><span class="out">STUDIOS</span></h1>
-        <div class="hero-mid">
-          <p class="mission">
-            We make realism-first survival games — worlds built with care, and
-            <b>no promises you'll make it through the night.</b>
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="https://graveerrorgame.com">Grave Error →</a>
-            <a class="btn" href="#games">Our games</a>
+      </div>
+      <a class="cue" href="#games">The games</a>
+    </section>
+
+    <section class="sec" id="games" aria-labelledby="games-h">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <div>
+            <p class="eyebrow">I–III</p>
+            <h2 id="games-h">In the Works</h2>
           </div>
+          <p class="aside">Three games at different stages. We'll share more as each one gets closer.</p>
+        </div>
+
+        <div class="list">
+          {
+            games.map((g) => (
+              <article class="work" id={g.id}>
+                <div class="chart" data-reveal aria-hidden="true">
+                  <svg class="frame" viewBox="0 0 120 120">
+                    <g fill="none" stroke="currentColor" stroke-width=".25">
+                      <circle cx="60" cy="60" r="59" stroke-opacity=".3" />
+                      <circle cx="60" cy="60" r="56" stroke-opacity=".14" stroke-dasharray=".3 1.2" stroke-width="1.6" />
+                      <ellipse cx="60" cy="60" rx="24" ry="59" stroke-opacity=".08" />
+                      <ellipse cx="60" cy="60" rx="46" ry="59" stroke-opacity=".08" />
+                      <path d="M1 60H119M5 40Q60 30 115 40M5 80Q60 90 115 80" stroke-opacity=".08" />
+                    </g>
+                  </svg>
+                  <svg viewBox="-14 -12 148 148">
+                    <g class="lines">
+                      <use href={`#${g.emblem}`} />
+                    </g>
+                    <g class="stars">
+                      {g.stars.map(([cx, cy, r]) => <circle cx={cx} cy={cy} r={r} />)}
+                      {g.labels.map(([x, y, t]) => <text x={x} y={y}>{t}</text>)}
+                    </g>
+                  </svg>
+                  <span class="label">{g.chartLabel}</span>
+                </div>
+                <div class="info" data-reveal>
+                  <span class="idx">{g.num}</span>
+                  <p class="eyebrow genre">{g.genre}</p>
+                  <h3>
+                    {g.title}
+                    {g.workingTitle && <span class="wt">Working title</span>}
+                  </h3>
+                  <p class="tag">{g.tag}</p>
+                  <p class="desc">{g.desc}</p>
+                  <ul class="facts">
+                    {g.facts.map((f) => <li>{f}</li>)}
+                    <li class="status">{g.status}</li>
+                  </ul>
+                  {g.link ? (
+                    <a class="more" href={g.link.href}>
+                      {g.link.text} <span class="arr" aria-hidden="true">→</span>
+                    </a>
+                  ) : (
+                    <p class="later">More to come</p>
+                  )}
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
-    <div class="strip" aria-hidden="true">
-      <div class="track">
-        <span><b>GRAVE ERROR</b></span><span>·</span><span>COMING EVENTUALLY</span><span>·</span><span><b>GRAVE ERROR</b></span><span>·</span><span>COMING EVENTUALLY</span><span>·</span><span><b>GRAVE ERROR</b></span><span>·</span><span>COMING EVENTUALLY</span><span>·</span><span><b>GRAVE ERROR</b></span><span>·</span><span>COMING EVENTUALLY</span><span>·</span>
-      </div>
-    </div>
 
-    <!-- GAMES -->
-    <section class="sec" id="games">
-      <div class="wrap sec-head">
-        <h2>The Games</h2>
-        <span class="idx lbl">01 / Catalogue</span>
-      </div>
-      <article class="feature">
-        <div
-          class="keyart"
-          role="img"
-          aria-label="Grave Error key art: a stark tombstone silhouette split by a jagged crack under a cold sky."
-        >
-          <svg viewBox="0 0 560 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="560" height="560" fill="#262b33"></rect>
-            <!-- halftone sky dots -->
-            <g fill="#3a4049">
-              <circle cx="60" cy="60" r="3"></circle><circle cx="120" cy="90" r="2"></circle><circle cx="200" cy="50" r="3"></circle>
-              <circle cx="300" cy="80" r="2"></circle><circle cx="420" cy="55" r="3"></circle><circle cx="500" cy="100" r="2"></circle>
-              <circle cx="90" cy="150" r="2"></circle><circle cx="470" cy="150" r="3"></circle><circle cx="380" cy="130" r="2"></circle>
-            </g>
-            <!-- ground -->
-            <rect y="420" width="560" height="140" fill="#1a1e24"></rect>
-            <path d="M0 420 L560 420 L560 440 L0 452 Z" fill="#31363f"></path>
-            <!-- tombstone -->
-            <g>
-              <path d="M180 430 L180 220 a100 100 0 0 1 200 0 L380 430 Z" fill="#fbfaf7"></path>
-              <!-- crack -->
-              <path
-                d="M282 150 L268 230 L296 250 L262 330 L292 350 L270 430"
-                fill="none"
-                stroke="#262b33"
-                stroke-width="7"
-                stroke-linejoin="round"></path>
-              <!-- engraved text marks -->
-              <rect x="220" y="270" width="120" height="8" fill="#262b33" opacity=".55"></rect>
-              <rect x="235" y="292" width="90" height="8" fill="#262b33" opacity=".45"></rect>
-              <rect x="245" y="314" width="70" height="8" fill="#262b33" opacity=".35"></rect>
-            </g>
-            <!-- clawing hands -->
-            <g stroke="#fbfaf7" stroke-width="8" stroke-linecap="round" fill="none" opacity=".9">
-              <path d="M110 470 v-46 M128 470 v-60 M146 470 v-44 M164 468 v-52"></path>
-            </g>
-            <g stroke="#fbfaf7" stroke-width="8" stroke-linecap="round" fill="none" opacity=".9">
-              <path d="M400 476 v-40 M418 476 v-56 M436 476 v-42"></path>
-            </g>
-          </svg>
-          <span class="coming">● Coming eventually</span>
-        </div>
-        <div class="fbody">
-          <div class="titlebar">
-            <h3>Grave<br />Error</h3>
-            <span class="genre lbl">3D Zombie Survival</span>
-          </div>
+    <section class="sec studio" id="studio" aria-labelledby="studio-h">
+      <div class="wrap">
+        <div class="statement" data-reveal>
+          <p class="eyebrow">The studio</p>
+          <h2 id="studio-h">Why it takes a while.</h2>
           <p>
-            It began with a software update. The HACK program placed adaptive nanobots in billions
-            of minds — then Core Update 3.0 shipped with a fatal flaw, and the bodies got back up.
-            You play a Null, one of the few the implants never took, loose in a procedurally
-            generated world of dead cities and open highways. Real day and night. Weather that
-            matters. Vehicles, firearms, and hordes that hunt by sight and sound. Built
-            realism-first — alone or with friends, you don't beat this world, you outlast it.
-          </p>
-          <dl class="specs">
-            <div><dt>Genre</dt><dd>Zombie Survival</dd></div>
-            <div><dt>Mode</dt><dd>Single & Multiplayer</dd></div>
-            <div><dt>Platforms</dt><dd>PC</dd></div>
-            <div><dt>Status</dt><dd>Coming Eventually</dd></div>
-          </dl>
-          <a class="btn btn-primary" href="https://graveerrorgame.com">Learn more →</a>
-        </div>
-      </article>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="sec" id="about">
-      <div class="wrap sec-head">
-        <h2>The Studio</h2>
-        <span class="idx lbl">02 / Who</span>
-      </div>
-      <div class="wrap about-grid">
-        <div class="about-left">
-          <h2>Realism<br />First.<br />No<br />Filler.</h2>
-        </div>
-        <div class="about-right">
-          <p>
-            <b>Atheos Studios is an independent game developer</b> making survival games. Every
-            system — hunger, weather, wounds, the way a horde hears you — is built with care and
-            intention, so the world feels real enough to be worth surviving.
+            Atheos Studios is an independent game developer. We don't license an engine. Each game runs on code we
+            wrote ourselves, down to how far a gunshot carries and how long a dwarf holds a grudge. It's the slow way to
+            make games, but it means each world works the way we want it to, not the way an engine expects.
           </p>
         </div>
+        <ul class="tenets" data-reveal>
+          {
+            tenets.map((t) => (
+              <li>
+                <span class="n">{t.n}</span>
+                <h3>{t.title}</h3>
+                <p>{t.text}</p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
-
   </main>
 
-  <footer class="site">
-    <div class="wrap foot">
-      <span>© 2026 Atheos Studios</span>
-      <span class="r">Realism-first survival games</span>
-      <span>atheosstudios.com</span>
+  <footer class="foot">
+    <div class="wrap">
+      <svg role="img" aria-label="Atheos Studios"><use href="#logo"></use></svg>
+      <small>© 2026 Atheos Studios · atheosstudios.com</small>
     </div>
   </footer>
 
   <script is:inline>
+    document.documentElement.classList.add("js");
     (function () {
-      var btn = document.getElementById("navbtn");
-      var menu = document.getElementById("mobilemenu");
-      if (!btn || !menu) return;
-      btn.addEventListener("click", function () {
-        var open = menu.classList.toggle("open");
-        btn.setAttribute("aria-expanded", open ? "true" : "false");
-        btn.textContent = open ? "Close ×" : "Menu +";
+      // Star field: fixed seed so every visit shows the same sky.
+      var sky = document.getElementById("sky"),
+        s = 7,
+        NS = "http://www.w3.org/2000/svg";
+      function r() {
+        s = (s * 16807) % 2147483647;
+        return s / 2147483647;
+      }
+      for (var i = 0; i < 170; i++) {
+        var c = document.createElementNS(NS, "circle");
+        var big = r() > 0.93;
+        c.setAttribute("cx", (r() * 1600).toFixed(1));
+        c.setAttribute("cy", (r() * 1000).toFixed(1));
+        c.setAttribute("r", big ? (1.3 + r() * 0.9).toFixed(2) : (0.4 + r() * 0.7).toFixed(2));
+        c.setAttribute("opacity", (big ? 0.55 : 0.18 + r() * 0.35).toFixed(2));
+        if (r() > 0.82) {
+          c.setAttribute("class", "tw");
+          c.style.animationDelay = (r() * 5).toFixed(2) + "s";
+        }
+        sky.appendChild(c);
+      }
+
+      // Header turns solid once you scroll.
+      var h = document.getElementById("hdr");
+      function hs() {
+        h.classList.toggle("solid", window.scrollY > 40);
+      }
+      hs();
+      addEventListener("scroll", hs, { passive: true });
+
+      // Phone menu.
+      var b = document.querySelector(".menubtn"),
+        n = document.getElementById("nav");
+      b.addEventListener("click", function () {
+        var o = n.classList.toggle("open");
+        b.setAttribute("aria-expanded", o);
+        b.textContent = o ? "Close" : "Menu";
+        h.classList.add("solid");
       });
-      menu.querySelectorAll("a").forEach(function (a) {
+      n.querySelectorAll("a").forEach(function (a) {
         a.addEventListener("click", function () {
-          menu.classList.remove("open");
-          btn.setAttribute("aria-expanded", "false");
-          btn.textContent = "Menu +";
+          n.classList.remove("open");
+          b.setAttribute("aria-expanded", "false");
+          b.textContent = "Menu";
         });
+      });
+
+      // Fade sections in as they scroll into view.
+      var els = document.querySelectorAll("[data-reveal]");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach(function (e) {
+          e.classList.add("in");
+        });
+        return;
+      }
+      var io = new IntersectionObserver(
+        function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -8% 0px" }
+      );
+      els.forEach(function (e) {
+        io.observe(e);
       });
     })();
   </script>

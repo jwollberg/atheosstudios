@@ -7,8 +7,8 @@ type Props = {
 };
 
 const {
-  title = "Atheos Studios — Independent Game Studio",
-  description = "Atheos Studios is an independent game studio making realism-first survival games. First title: Grave Error — a 3D zombie survival game, coming to PC.",
+  title = "Atheos Studios · Independent Game Studio",
+  description = "Atheos Studios is an independent game studio. In development: Grave Error, Elderdeep, and a third game, working title Holdout.",
 } = Astro.props;
 ---
 
@@ -18,7 +18,11 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#FBFAF7" />
+    <meta name="theme-color" content="#1E2228" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.site} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/brand-kit/icon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand-kit/icon-32.png" />
@@ -27,7 +31,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap"
       rel="stylesheet"
     />
   </head>
