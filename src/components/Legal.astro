@@ -1,0 +1,51 @@
+---
+// A plain page of text in the site's look: the privacy notice and the terms.
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+type Props = { title: string };
+const { title } = Astro.props;
+---
+
+<SiteLayout title={`${title} · Atheos Studios`} description={`${title} for Atheos Studios and its private apps.`}>
+  <main class="legal wrap">
+    <a class="back" href="/">← Atheos Studios</a>
+    <p class="eyebrow">Fine print</p>
+    <h1>{title}</h1>
+    <slot />
+  </main>
+</SiteLayout>
+
+<style>
+  .legal {
+    max-width: 720px;
+    padding-block: 64px 96px;
+  }
+  .back {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: var(--p-60);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .back:hover {
+    color: var(--paper);
+  }
+  h1 {
+    font-size: clamp(36px, 6vw, 52px);
+    margin: 10px 0 28px;
+  }
+  .legal :global(h2) {
+    font-size: 24px;
+    margin: 36px 0 10px;
+  }
+  .legal :global(p),
+  .legal :global(li) {
+    color: var(--p-80);
+  }
+  .legal :global(ul) {
+    padding-left: 20px;
+  }
+  .legal :global(a) {
+    color: var(--paper);
+  }
+</style>

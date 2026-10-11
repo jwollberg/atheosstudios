@@ -42,5 +42,9 @@ mysterious, human — **not** corporate.
   **never imply a team and never say solo**. **No dates anywhere.** No contact/email/social section
   (Josh removed it).
 
+- **`/privacy/` and `/terms/`** (`src/components/Legal.astro`): Google's sign-in for the private apps
+  (OAuth client in `atheos-access`, published) needs a public home page, privacy policy and terms. They
+  are the one place the site gives a contact email, and nothing on the home page links to them.
+
 **Status:** Nyx is live at atheosstudios.com (GitHub Pages behind Cloudflare; shipped 2026-10-09). Push to
 `main` = deploy.
